@@ -1,1 +1,535 @@
+<html><head><base href="https://safeshare-es.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeShare-eS: Your Trusted Home-Sharing Platform</title>
+<style>
+  :root {
+    --primary-color: #926E5A;
+    --secondary-color: #5D4037;
+    --accent-color: #D7CCC8;
+    --text-color: #ECEFF1;
+    --background-color: #263238;
+    --card-background: #37474F;
+    --hover-color: #7E57C2;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: var(--card-background);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: var(--hover-color);
+  }
+  
+  nav ul {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  nav ul li {
+    margin-left: 2rem;
+    position: relative;
+  }
+  
+  nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: var(--hover-color);
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card-background);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  main {
+    padding-top: 80px;
+  }
+  
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: var(--hover-color);
+  }
+  
+  .services, .blogs, .get-app {
+    padding: 5rem 10%;
+    background-color: var(--background-color);
+  }
+  
+  .services h2, .blogs h2, .get-app h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent-color);
+  }
+  
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .service-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+  
+  .about {
+    padding: 5rem 10%;
+    background-color: var(--card-background);
+  }
+  
+  .about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent-color);
+  }
+  
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .about-image {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .about-image img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .about-text {
+    flex: 1;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .blog-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .blog-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+  }
+  
+  .blog-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+  
+  .blog-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .read-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .get-app {
+    text-align: center;
+  }
+  
+  .app-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .app-button {
+    display: inline-block;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .app-button:hover {
+    background-color: var(--hover-color);
+  }
+  
+  footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  .social-links {
+    margin-top: 1rem;
+  }
+  
+  .social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: var(--hover-color);
+  }
+  
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      padding: 1rem 2%;
+    }
+    
+    nav ul {
+      margin-top: 1rem;
+    }
+    
+    nav ul li {
+      margin-left: 1rem;
+    }
+    
+    .about-content {
+      flex-direction: column;
+    }
+    
+    .about-image {
+      margin-bottom: 2rem;
+    }
+    
+    .app-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">SafeShare-eS</a>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="/blogs">Our Blogs</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Pages</a>
+            <div class="dropdown-content">
+              <a href="/faq">FAQ</a>
+              <a href="/terms">Terms of Service</a>
+              <a href="/privacy">Privacy Policy</a>
+            </div>
+          </li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="#get-app">Get App</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to SafeShare-eS</h1>
+        <p>Your trusted platform for safe and convenient home-sharing solutions</p>
+        <a href="#services" class="cta-button">Explore Our Services</a>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="https://img.icons8.com/ios-filled/100/926E5A/home.png" alt="Home icon" width="64" height="64">
+          </div>
+          <h3>Property Listings</h3>
+          <p>Find your perfect home or list your property with ease.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="https://img.icons8.com/ios-filled/100/926E5A/user-group-man-man.png" alt="Rent buddies icon" width="64" height="64">
+          </div>
+          <h3>Rent Buddies</h3>
+          <p>Connect with compatible roommates and share your living space.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="https://img.icons8.com/ios-filled/100/926E5A/wheelchair.png" alt="Accessible living icon" width="64" height="64">
+          </div>
+          <h3>Senior & Disabled Living</h3>
+          <p>Specialized accommodations for seniors and individuals with disabilities.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="https://img.icons8.com/ios-filled/100/926E5A/broom.png" alt="Cleaning services icon" width="64" height="64">
+          </div>
+          <h3>Maintenance & Cleaning</h3>
+          <p>Keep your living space pristine with our professional services.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="https://img.icons8.com/ios-filled/100/926E5A/sofa.png" alt="Furnishing icon" width="64" height="64">
+          </div>
+          <h3>Furnishing</h3>
+          <p>Transform your space with our curated furniture and decor options.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <img src="https://img.icons8.com/ios-filled/100/926E5A/nanny-male.png" alt="Child-minder icon" width="64" height="64">
+          </div>
+          <h3>Child-Minder Services</h3>
+          <p>Reliable and vetted childcare services for peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2>About Us</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Team of professionals working together" width="500" height="333">
+        </div>
+        <div class="about-text">
+          <p>At SafeShare-eS, we're committed to revolutionizing the home-sharing experience. Our platform brings together a comprehensive suite of services designed to make finding, sharing, and maintaining a home easier than ever before.</p>
+          <p>Founded by a team of housing and technology experts, we understand the challenges of modern living arrangements. That's why we've created a secure, user-friendly ecosystem that caters to diverse needs - from young professionals seeking roommates to seniors looking for accessible living options.</p>
+          <p>Our mission is to create a community where everyone can find their ideal living situation, supported by top-notch services and a network of trusted providers. With SafeShare-eS, you're not just finding a place to live; you're finding a home.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blogs">
+      <h2>Our Blogs</h2>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+          <div class="blog-content">
+            <h3>5 Tips for Finding the Perfect Roommate</h3>
+            <p>Discover how to make your roommate search successful and stress-free.</p>
+            <a href="/blog/perfect-roommate-tips" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+          <div class="blog-content">
+            <h3>The Future of Senior Living: Tech-Enabled Homes</h3>
+            <p>Explore how technology is transforming senior living spaces for enhanced comfort and safety.</p>
+            <a href="/blog/tech-enabled-senior-living" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+          <div class="blog-content">
+            <h3>Maximizing Small Spaces: Interior Design Hacks</h3>
+            <p>Learn clever design tricks to make the most of your compact living area.</p>
+            <a href="/blog/small-space-design-hacks" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="get-app" class="get-app">
+      <h2>Get Our App</h2>
+      <p>Download the SafeShare-eS app for a seamless home-sharing experience on the go.</p>
+      <div class="app-buttons">
+        <a href="https://apps.apple.com/us/app/safeshare-es" class="app-button" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-apple"></i> Download on the App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.safesharees" class="app-button" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-google-play"></i> Get it on Google Play
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 SafeShare-eS. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://facebook.com/safesharees" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+      <a href="https://instagram.com/safesharees" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/safesharees" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com/company/safesharees" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Lazy loading images
+    document.addEventListener("DOMContentLoaded", function() {
+      var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+      if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              let lazyImage = entry.target;
+              lazyImage.src = lazyImage.dataset.src;
+              lazyImage.classList.remove("lazy");
+              lazyImageObserver.unobserve(lazyImage);
+            }
+          });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+          lazyImageObserver.observe(lazyImage);
+        });
+      } else {
+        // Fallback for browsers without IntersectionObserver support
+      }
+    });
+
+    // Add any additional JavaScript functionality here
+  </script>
+</body>
+</html>
